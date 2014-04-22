@@ -25,7 +25,8 @@ OTHER_FILES += qml/testing.qml \
     rpm/testing.yaml \
     translations/*.ts \
     testing.desktop \
-    qml/sugar.js
+    qml/sugar.js \
+    qml/pages/upcoming.js
 
 # to disable building translations every time, comment out the
 # following CONFIG line

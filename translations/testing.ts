@@ -22,5 +22,9 @@
         <source>Nested Page</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
