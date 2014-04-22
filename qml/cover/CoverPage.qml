@@ -30,19 +30,43 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../pages/upcoming.js" as Upcoming
 
 CoverBackground {
-    Label {
-        id: label
+    property bool active: status == Cover.Active
+    Rectangle {
+        height: 80
         anchors.centerIn: parent
-        text: "My Cover"
+        anchors.verticalCenterOffset: -100
+        Label {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            text: app.coverStop
+            font.bold: true
+        }
+        Label {
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: app.coverTime
+        }
     }
 
+    Timer {
+        interval: 30000; running: true; repeat: true; triggeredOnStart: true
+        onTriggered: {
+            if(status && app.stopNo && app.routeNo) {
+                console.log('Updating')
+                Upcoming.update(app.stopNo, app.routeNo)
+            } else {
+                console.log('Not updating as we\'re inactive')
+            }
+        }
+    }
     CoverActionList {
         id: coverAction
 
         CoverAction {
-            iconSource: "image://theme/icon-cover-next"
+            iconSource: "image://theme/icon-cover-refresh"
         }
 
         CoverAction {

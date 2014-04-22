@@ -34,6 +34,12 @@ import "pages"
 
 ApplicationWindow
 {
+    id: app
+    property variant coverStop: "NA"
+    property variant coverTime: ""
+    property int stopNo: 0
+    property int routeNo: 0
+    property bool active: Qt.application.active
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }

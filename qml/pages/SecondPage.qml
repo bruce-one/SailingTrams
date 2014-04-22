@@ -35,6 +35,9 @@ import 'upcoming.js' as Upcoming
 
 Page {
     id: page
+    property int stopNo: 2022
+    property int routeNo: 72
+    property bool active: (status == PageStatus.Active || status == PageStatus.Activating) && app.active
     ListModel {
         id: listModel
         ListElement { name: "Unknown" }
@@ -59,15 +62,19 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Update")
-                onClicked: Upcoming.update()
+                onClicked: Upcoming.update(page.stopNo, page.routeNo)
             }
         }
 
         Timer {
             interval: 30000; running: true; repeat: true; triggeredOnStart: true
             onTriggered: {
-                console.log('Updating')
-                Upcoming.update()
+                if(page.active) {
+                    console.log('Updating')
+                    Upcoming.update(page.stopNo, page.routeNo)
+                } else {
+                    console.log('Page not active, not updating')
+                }
             }
         }
 
