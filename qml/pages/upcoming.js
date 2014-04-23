@@ -14,16 +14,23 @@ function update(stopNo, routeNo, force){
                 var tmp = JSON.parse(xhr.responseText)
                     , time
                     , firstTime
+                    , data = []
 
                 typeof(listModel) !== "undefined" && listModel.clear()
 
                 tmp.responseObject.each(function(it, i) {
                     time = Date.create(parseInt(new RegExp(/([0-9]+)/).exec(it.PredictedArrivalDateTime)[0], 10))
-                    firstTime = firstTime || time
                     console.log('Setting time to: ' + time.relative())
                     //delegate.children['0'].text = time.relative()
-                    typeof(listModel) !== "undefined" && listModel.append({name:time.relative()})
+                    data.push({name:time.relative(), time: time})
+
                 })
+                data = data.sortBy(function(it){
+                    return it.time
+                })
+                firstTime = data.first() ? data.first().time : ''
+                typeof(listModel) !== "undefined" && data.each(function(it) { listModel.append(it) })
+
                 app.stopNo = stopNo
                 app.routeNo = routeNo
                 app.coverStop = stopNo
