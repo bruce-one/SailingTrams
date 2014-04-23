@@ -4,11 +4,13 @@ function update(stopNo, routeNo, force){
         return
     }
 
-    var xhr = new XMLHttpRequest()
+    var xhr = app.xhr = new XMLHttpRequest()
+
     xhr.open("GET", "http://www.tramtracker.com/Controllers/GetNextPredictionsForStop.ashx?stopNo="+stopNo+"&routeNo="+routeNo+"&isLowFloor=false")
     xhr.onreadystatechange = function() {
         if ( xhr.readyState == xhr.DONE ) {
             if ( xhr.status == 200 ) {
+
                 var tmp = JSON.parse(xhr.responseText)
                     , time
                     , firstTime

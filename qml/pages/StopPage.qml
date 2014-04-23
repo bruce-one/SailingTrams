@@ -40,7 +40,6 @@ Page {
     property bool active: (status == PageStatus.Active || status == PageStatus.Activating) && app.active
     ListModel {
         id: listModel
-        ListElement { name: "Unknown" }
     }
     SilicaListView {
         id: listView
@@ -77,7 +76,18 @@ Page {
                 }
             }
         }
-
+        Timer {
+            interval: 15000; running: true; repeat: false
+            onTriggered: {
+                listModel.count == 0 && (viewPlaceholder.text = "Update failed :-(\nWill retry soon...")
+                typeof(app.xhr) !== 'undefined' && app.xhr.abort()
+            }
+        }
+        ViewPlaceholder {
+            id: viewPlaceholder
+            enabled: listView.count == 0
+            text: "Updating..."
+        }
         VerticalScrollDecorator {}
     }
 }

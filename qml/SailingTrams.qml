@@ -44,6 +44,7 @@ ApplicationWindow
     property var db
     property bool _paused: false
     property bool paused: _paused || (stopNo == 0)
+    property var xhr
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }
