@@ -36,9 +36,6 @@ Page {
 
     ListModel {
         id: listModel
-        ListElement {
-            name: "Unknown"
-        }
     }
 
     SilicaListView {
@@ -86,17 +83,17 @@ Page {
                 pageStack.push(Qt.resolvedUrl("StopPage.qml"), {stopNo: stopNo, routeNo: routeNo})
             }
             function remove() {
+                var index = model.index
+                    , stopNo = listModel.get(index).stopNo
+                    , routeNo = listModel.get(index).routeNo
                 remorseAction("Deleting", function() {
-                    var index = model.index
-                        , stopNo = listModel.get(index).stopNo
-                        , routeNo = listModel.get(index).routeNo
                     if(typeof(app.db) !== 'undefined') {
                         app.db.transaction(function(tx) {
                             var result = tx.executeSql('DELETE FROM UserStops WHERE stopNo = ? and routeNo = ?;', [stopNo, routeNo])
                             console.log('Deleted ' + result.rowsAffected + ' rows')
                         })
-                        Database.update()
                     }
+                    animateRemoval()
 
                 }, 3000)
             }
