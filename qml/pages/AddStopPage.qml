@@ -23,7 +23,7 @@ Dialog {
         TextField {
             id: routeNoField
             width: 480
-            placeholderText: qsTr("Route number")
+            placeholderText: qsTr("Route number - optional")
             label: qsTr("Route number")
             inputMethodHints: Qt.ImhDigitsOnly
             validator: IntValidator { bottom: 0; top: 200 }
