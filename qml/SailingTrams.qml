@@ -42,6 +42,8 @@ ApplicationWindow
     property int routeNo: 0
     property bool active: Qt.application.active
     property var db
+    property bool _paused: false
+    property bool paused: _paused || (stopNo == 0)
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }

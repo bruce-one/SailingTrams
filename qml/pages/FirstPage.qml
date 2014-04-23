@@ -74,8 +74,9 @@ Page {
             menu: contextMenu
             Label {
                 x: Theme.paddingLarge
-                text: name
+                text: qsTr("Stop ") + name
                 anchors.verticalCenter: parent.verticalCenter
+                //anchors.horizontalCenter: parent.horizontalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
             onClicked: {
@@ -106,6 +107,10 @@ Page {
                     }
                 }
             }
+        }
+        ViewPlaceholder {
+            enabled: listView.count == 0
+            text: "No stops registered, use the pulley to add"
         }
         VerticalScrollDecorator {}
     }

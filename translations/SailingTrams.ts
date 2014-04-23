@@ -17,6 +17,13 @@
     </message>
 </context>
 <context>
+    <name>CoverPage</name>
+    <message>
+        <source>SailingTrams</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
         <source>Add stop</source>
@@ -24,6 +31,10 @@
     </message>
     <message>
         <source>Stops</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -35,6 +46,10 @@
     </message>
     <message>
         <source>Stop: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Route: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

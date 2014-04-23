@@ -47,7 +47,7 @@ Page {
         model: listModel
         anchors.fill: parent
         header: PageHeader {
-            title: qsTr("Stop: ") + stopNo
+            title: qsTr("Stop: ") + stopNo + (routeNo ? ("\n" + qsTr("Route: ") + routeNo) : "" )
         }
         delegate: BackgroundItem {
             id: delegate
@@ -71,7 +71,7 @@ Page {
             onTriggered: {
                 if(page.active) {
                     console.log('Updating')
-                    Upcoming.update(page.stopNo, page.routeNo)
+                    Upcoming.update(page.stopNo, page.routeNo, true)
                 } else {
                     console.log('Page not active, not updating')
                 }
