@@ -2,28 +2,39 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>FirstPage</name>
+    <name>AddStopPage</name>
     <message>
-        <source>Show Page 2</source>
+        <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
+        <source>Stop number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hello Sailors</source>
+        <source>Route number</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>SecondPage</name>
+    <name>FirstPage</name>
     <message>
-        <source>Nested Page</source>
+        <source>Add stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Stops</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StopPage</name>
+    <message>
         <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

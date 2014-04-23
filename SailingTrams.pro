@@ -10,26 +10,28 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = testing
+TARGET = SailingTrams
 
 CONFIG += sailfishapp
 
-SOURCES += src/testing.cpp
+SOURCES += src/SailingTrams.cpp
 
-OTHER_FILES += qml/testing.qml \
+OTHER_FILES += qml/SailingTrams.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
-    rpm/testing.changes.in \
-    rpm/testing.spec \
-    rpm/testing.yaml \
+    rpm/SailingTrams.changes.in \
+    rpm/SailingTrams.spec \
+    rpm/SailingTrams.yaml \
     translations/*.ts \
-    testing.desktop \
+    SailingTrams.desktop \
     qml/sugar.js \
-    qml/pages/upcoming.js
+    qml/pages/upcoming.js \
+    qml/pages/StopPage.qml \
+    qml/pages/AddStopPage.qml \
+    qml/pages/database.js
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/testing-de.ts
+#TRANSLATIONS += translations/SailingTrams-de.ts
 

@@ -30,44 +30,89 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
-
+import 'database.js' as Database
 Page {
     id: page
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
-        anchors.fill: parent
-
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("Show Page 2")
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
-            }
-        }
-
-        // Tell SilicaFlickable the height of its content.
-        contentHeight: column.height
-
-        // Place our content in a Column.  The PageHeader is always placed at the top
-        // of the page, followed by our content.
-        Column {
-            id: column
-
-            width: page.width
-            spacing: Theme.paddingLarge
-            PageHeader {
-                title: qsTr("UI Template")
-            }
-            Label {
-                x: Theme.paddingLarge
-                text: qsTr("Hello Sailors")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }
+    ListModel {
+        id: listModel
+        ListElement {
+            name: "Unknown"
         }
     }
+
+    SilicaListView {
+        id: listView
+        model: listModel
+        //anchors.topMargin: 100
+        anchors.fill: parent
+
+        header: PageHeader {
+            title: qsTr("Stops")
+        }
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Add stop")
+                onClicked: {
+                    var dialog = pageStack.push(Qt.resolvedUrl("AddStopPage.qml"))
+                    dialog.accepted.connect(function() {
+                        if(app.db) {
+                            app.db.transaction(function(tx) {
+                                tx.executeSql('INSERT INTO UserStops(stopNo, routeNo) VALUES(?, ?);', [dialog.stopNo, dialog.routeNo])
+                            })
+                        }
+                        Database.update()
+                    })
+                    dialog.rejected.connect(Database.update)
+                }
+            }
+        }
+        delegate: ListItem {
+            id: delegate
+            property int stopNo: stopNo
+            property int routeNo: routeNo
+            menu: contextMenu
+            Label {
+                x: Theme.paddingLarge
+                text: name
+                anchors.verticalCenter: parent.verticalCenter
+                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+            }
+            onClicked: {
+                var index = model.index
+                    , ourModel = listModel.get(model.index)
+                pageStack.push(Qt.resolvedUrl("StopPage.qml"), {stopNo: ourModel.stopNo, routeNo: ourModel.routeNo})
+            }
+            function remove() {
+                remorseAction("Deleting", function() {
+                    var index = model.index
+                        , ourModel = listModel.get(model.index)
+                    if(app.db) {
+                        app.db.transaction(function(tx) {
+                            var result = tx.executeSql('DELETE FROM UserStops WHERE stopNo = ? and routeNo = ?;', [ourModel.stopNo, ourModel.routeNo])
+                            console.log('Deleted ' + result.rowsAffected + ' rows')
+                        })
+                        Database.update()
+                    }
+                }, 3000)
+            }
+
+            Component {
+                id: contextMenu
+                ContextMenu {
+                    MenuItem {
+                        text: "Remove"
+                        onClicked: remove()
+                    }
+                }
+            }
+        }
+        VerticalScrollDecorator {}
+    }
+
+
+    Component.onCompleted: Database.update()
+
 }
 
 

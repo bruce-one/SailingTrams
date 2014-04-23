@@ -30,59 +30,20 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import '../sugar.js' as NA
-import 'upcoming.js' as Upcoming
+import QtQuick.LocalStorage 2.0
+import "pages"
 
-Page {
-    id: page
-    property int stopNo: 2022
-    property int routeNo: 72
-    property bool active: (status == PageStatus.Active || status == PageStatus.Activating) && app.active
-    ListModel {
-        id: listModel
-        ListElement { name: "Unknown" }
-    }
-    SilicaListView {
-        id: listView
-        model: listModel
-        anchors.fill: parent
-        header: PageHeader {
-            title: qsTr("Nested Page")
-        }
-        delegate: BackgroundItem {
-            id: delegate
-
-            Label {
-                x: Theme.paddingLarge
-                text: name
-                anchors.verticalCenter: parent.verticalCenter
-                color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-            }
-        }
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("Update")
-                onClicked: Upcoming.update(page.stopNo, page.routeNo)
-            }
-        }
-
-        Timer {
-            interval: 30000; running: true; repeat: true; triggeredOnStart: true
-            onTriggered: {
-                if(page.active) {
-                    console.log('Updating')
-                    Upcoming.update(page.stopNo, page.routeNo)
-                } else {
-                    console.log('Page not active, not updating')
-                }
-            }
-        }
-
-        VerticalScrollDecorator {}
-    }
+ApplicationWindow
+{
+    id: app
+    property string coverStop: "NA"
+    property string coverTime: ""
+    property int stopNo: 0
+    property int routeNo: 0
+    property bool active: Qt.application.active
+    property var db
+    initialPage: Component { FirstPage { } }
+    cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }
-
-
-
 
 

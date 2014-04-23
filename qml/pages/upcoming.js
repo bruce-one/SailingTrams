@@ -16,7 +16,6 @@ function update(stopNo, routeNo){
                     //delegate.children['0'].text = time.relative()
                     listModel.append({name:time.relative()})
                 })
-                console.log(app.coverTitle)
                 app.stopNo = stopNo
                 app.routeNo = routeNo
                 app.coverStop = stopNo

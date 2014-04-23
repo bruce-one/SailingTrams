@@ -67,10 +67,15 @@ CoverBackground {
 
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
+            onTriggered: {
+                console.log('Update requested')
+                Upcoming.update(app.stopNo, app.routeNo)
+            }
         }
 
         CoverAction {
             iconSource: "image://theme/icon-cover-pause"
+            //TODO - thinking pause and start for disabling/enabling auto update manually
         }
     }
 }

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Name=testing
-Icon=testing
-Exec=testing
+Name=SailingTrams
+Icon=SailingTrams
+Exec=SailingTrams
 
