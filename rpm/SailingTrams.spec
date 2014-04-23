@@ -13,11 +13,11 @@ Name:       SailingTrams
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    TramTracker app for Sailfish
-Version:    0.2.4
+Version:    0.3.0
 Release:    1
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    MIT
+URL:        https://github.com/bruce-one/SailingTrams
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  SailingTrams.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+Very basic application for getting tram arrival times for Melbourne's tram network
 
 
 %prep

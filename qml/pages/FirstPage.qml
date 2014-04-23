@@ -66,26 +66,27 @@ Page {
         }
         delegate: ListItem {
             id: delegate
-            property int stopNo: stopNo
-            property int routeNo: routeNo
             menu: contextMenu
             Label {
+                id: nameLabel
                 x: Theme.paddingLarge
                 text: qsTr("Stop ") + name
-                anchors.verticalCenter: parent.verticalCenter
-                //anchors.horizontalCenter: parent.horizontalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
+            Label {
+                id: routeLabel
+                text: routeNo != 0 ? routeNo : 'All'
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryColor
+                anchors {
+                    left: nameLabel.left
+                    top: nameLabel.bottom
+                }
+            }
             onClicked: {
-                var index = model.index
-                    , stopNo = listModel.get(index).stopNo
-                    , routeNo = listModel.get(index).routeNo
                 pageStack.push(Qt.resolvedUrl("StopPage.qml"), {stopNo: stopNo, routeNo: routeNo})
             }
             function remove() {
-                var index = model.index
-                    , stopNo = listModel.get(index).stopNo
-                    , routeNo = listModel.get(index).routeNo
                 remorseAction("Deleting", function() {
                     if(typeof(app.db) !== 'undefined') {
                         app.db.transaction(function(tx) {
