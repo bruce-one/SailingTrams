@@ -1,0 +1,19 @@
+SailingTrams
+============
+
+This is a very basic application for getting tram arrival times for Melbourne's tram network.
+
+It's based on the TramTracker service.
+
+Currently it's designed around a list of stops that a user is interested in which are displayed on the home screen.
+New stops can be added through the use of the pulley.
+
+Selecting a stop will bring up a screen showing the arrival estimates for the stop (and optionally route - route selection is currently optional on the "add stop" page) selected.
+It also means that the application cover (ie on the task switching page) will show the arrival information for the soonest tram for that stop (and again, optionally route).
+
+Updates on the stop page happen periodically (as of writing, every 30 seconds) or the "update" pulley option can be used.
+
+If a stop has been selected, then the application cover also does period updates (again 30 seconds) if the application cover is active (based on the [Cover](https://sailfishos.org/sailfish-silica/qml-sailfishsilica-cover.html) "status".)
+These updates can be paused or an update can be requested explicitly using the cover actions.
+
+This application is built using the [Sailfish SDK](sailfishos.org).
