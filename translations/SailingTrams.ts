@@ -17,13 +17,6 @@
     </message>
 </context>
 <context>
-    <name>CoverPage</name>
-    <message>
-        <source>SailingTrams</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FirstPage</name>
     <message>
         <source>Add stop</source>
@@ -35,6 +28,13 @@
     </message>
     <message>
         <source>Stop </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SailingTrams</name>
+    <message>
+        <source>SailingTrams</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

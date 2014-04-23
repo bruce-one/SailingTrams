@@ -36,7 +36,7 @@ import "pages"
 ApplicationWindow
 {
     id: app
-    property string coverStop: "NA"
+    property string coverStop: qsTr('SailingTrams')
     property string coverTime: ""
     property int stopNo: 0
     property int routeNo: 0

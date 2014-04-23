@@ -41,7 +41,7 @@ CoverBackground {
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            text: app.paused ? qsTr('SailingTrams') : app.coverStop
+            text: app._paused ? "" : app.coverStop
             font.bold: true
         }
         Label {
@@ -80,9 +80,8 @@ CoverBackground {
         CoverAction {
             iconSource: app.paused ? "image://theme/icon-cover-play" : "image://theme/icon-cover-pause"
             onTriggered: {
-                app._paused = !app._paused
+                app._paused = app.stopNo == 0 ? false : !app._paused
             }
-            //TODO - thinking pause and start for disabling/enabling auto update manually
         }
     }
 }
