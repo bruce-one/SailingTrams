@@ -63,7 +63,7 @@ CoverBackground {
     Timer {
         interval: 30000; running: true; repeat: true; triggeredOnStart: true
         onTriggered: {
-            if(status && app.stopNo && app.routeNo) {
+            if(status && app.stopNo) {
                 console.log('Updating')
                 Upcoming.update(app.stopNo, app.routeNo)
             } else {
