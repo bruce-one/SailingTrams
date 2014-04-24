@@ -42,7 +42,6 @@ Page {
         id: listView
         model: listModel
         anchors.fill: parent
-        spacing: Theme.paddingLarge
         header: PageHeader {
             title: qsTr("Stops")
         }
@@ -66,12 +65,14 @@ Page {
         delegate: ListItem {
             id: delegate
             menu: contextMenu
+            contentHeight: Theme.itemSizeLarge
             Label {
                 id: nameLabel
                 x: Theme.paddingLarge
                 font.pixelSize: Theme.fontSizeLarge
                 text: qsTr("Stop ") + name
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                anchors.verticalCenter: parent.verticalCenter
             }
             Label {
                 id: routeLabel
@@ -80,7 +81,7 @@ Page {
                 color: Theme.secondaryColor
                 anchors {
                     left: nameLabel.left
-                    top: nameLabel.bottom
+                    bottom: parent.bottom
                 }
             }
             onClicked: {

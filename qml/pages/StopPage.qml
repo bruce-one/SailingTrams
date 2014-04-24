@@ -51,13 +51,15 @@ Page {
         }
         delegate: BackgroundItem {
             id: delegate
+            contentHeight: Theme.itemSizeLarge
             Label {
                 id: timeLabel
                 x: Theme.paddingLarge
                 font.pixelSize: Theme.fontSizeLarge
                 text: name
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
-                anchors.verticalCenter: routeNo == '' ? parent.verticalCenter : parent.top
+
+                anchors.verticalCenter: parent.verticalCenter
             }
             Label {
                 id: routeLabel
@@ -66,7 +68,7 @@ Page {
                 color: Theme.secondaryColor
                 anchors {
                     left: timeLabel.left
-                    top: timeLabel.bottom
+                    bottom: parent.bottom
                 }
             }
         }

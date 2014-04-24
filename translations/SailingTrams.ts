@@ -45,15 +45,15 @@
 <context>
     <name>StopPage</name>
     <message>
-        <source>Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Stop: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Route: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
