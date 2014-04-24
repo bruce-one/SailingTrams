@@ -45,6 +45,7 @@ Page {
         id: listView
         model: listModel
         anchors.fill: parent
+        spacing: Theme.paddingLarge
         header: PageHeader {
             title: qsTr("Stop: ") + stopNo + (routeNo ? ("\n" + qsTr("Route: ") + routeNo) : "" )
         }
@@ -53,8 +54,10 @@ Page {
             Label {
                 id: timeLabel
                 x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeLarge
                 text: name
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+                anchors.verticalCenter: routeNo == '' ? parent.verticalCenter : parent.top
             }
             Label {
                 id: routeLabel

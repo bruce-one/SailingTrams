@@ -41,9 +41,8 @@ Page {
     SilicaListView {
         id: listView
         model: listModel
-        //anchors.topMargin: 100
         anchors.fill: parent
-
+        spacing: Theme.paddingLarge
         header: PageHeader {
             title: qsTr("Stops")
         }
@@ -70,6 +69,7 @@ Page {
             Label {
                 id: nameLabel
                 x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeLarge
                 text: qsTr("Stop ") + name
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
             }
