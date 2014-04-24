@@ -5,9 +5,9 @@ function update(stopNo, routeNo, force){
         console.log('Not updating because the app is paused')
         return
     }
+    console.log('Updating')
 
     var xhr = app.xhr = new XMLHttpRequest()
-
     xhr.open("GET", "http://www.tramtracker.com/Controllers/GetNextPredictionsForStop.ashx?stopNo="+stopNo+"&routeNo="+routeNo+"&isLowFloor=false")
     xhr.onreadystatechange = function() {
         if ( xhr.readyState == xhr.DONE ) {
@@ -17,6 +17,7 @@ function update(stopNo, routeNo, force){
                     , time
                     , firstTime
                     , data = []
+                    , skipOpacity = typeof(listModel) !== "undefined" && listModel.count == 0
 
                 typeof(listModel) !== "undefined" && listModel.clear()
 
@@ -43,7 +44,14 @@ function update(stopNo, routeNo, force){
                         coverLabel.opacity = 1
                     }, 500)
                 }
-
+                if(typeof(listOpacity) !== "undefined" && !skipOpacity) {
+                    window.setTimeout(function(){
+                        listOpacity = 0.4
+                    }, 250)
+                    window.setTimeout(function(){
+                        listOpacity = 1
+                    }, 500)
+                }
             }
         }
     }

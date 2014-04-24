@@ -37,6 +37,7 @@ Page {
     id: page
     property int stopNo
     property int routeNo
+    property real listOpacity: 1
     property bool active: (status == PageStatus.Active || status == PageStatus.Activating) && app.active
     ListModel {
         id: listModel
@@ -54,12 +55,16 @@ Page {
             contentHeight: Theme.itemSizeLarge
             Label {
                 id: timeLabel
+                opacity: listOpacity
                 x: Theme.paddingLarge
                 font.pixelSize: Theme.fontSizeLarge
                 text: name
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
 
                 anchors.verticalCenter: parent.verticalCenter
+                Behavior on opacity {
+                    FadeAnimation {}
+                }
             }
             Label {
                 id: routeLabel
@@ -77,6 +82,11 @@ Page {
                 text: qsTr("Update")
                 onClicked: Upcoming.update(page.stopNo, page.routeNo)
             }
+        }
+
+        Connections {
+            target: Qt.application
+            onActiveChanged: Qt.application.active && Upcoming.update(page.stopNo, page.routeNo, true)
         }
 
         Timer {
