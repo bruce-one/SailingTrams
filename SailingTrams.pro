@@ -28,7 +28,8 @@ OTHER_FILES += qml/SailingTrams.qml \
     qml/pages/upcoming.js \
     qml/pages/StopPage.qml \
     qml/pages/AddStopPage.qml \
-    qml/pages/database.js
+    qml/pages/database.js \
+    qml/pages/window.js
 
 # to disable building translations every time, comment out the
 # following CONFIG line

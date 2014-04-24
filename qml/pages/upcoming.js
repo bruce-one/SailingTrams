@@ -1,3 +1,5 @@
+.import "window.js" as Window
+var window = Window
 function update(stopNo, routeNo, force){
     if(!force && app.paused) {
         console.log('Not updating because the app is paused')
@@ -35,6 +37,13 @@ function update(stopNo, routeNo, force){
                 app.routeNo = routeNo
                 app.coverStop = stopNo
                 app.coverTime = Date.create().minutesUntil(firstTime) + 'm'
+                if(typeof(coverLabel) !== "undefined") {
+                    coverLabel.opacity = 0
+                    window.setTimeout(function(){
+                        coverLabel.opacity = 1
+                    }, 500)
+                }
+
             }
         }
     }

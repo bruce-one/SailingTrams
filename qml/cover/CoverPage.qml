@@ -45,9 +45,14 @@ CoverBackground {
             font.bold: true
         }
         Label {
+            id: coverLabel
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             text: app.paused ? '' : app.coverTime
+            Behavior on opacity {
+                FadeAnimation {}
+            }
+
         }
     }
     CoverPlaceholder {
