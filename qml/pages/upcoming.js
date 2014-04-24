@@ -22,7 +22,7 @@ function update(stopNo, routeNo, force){
                     time = Date.create(parseInt(new RegExp(/([0-9]+)/).exec(it.PredictedArrivalDateTime)[0], 10))
                     console.log('Setting time to: ' + time.relative())
                     //delegate.children['0'].text = time.relative()
-                    data.push({name:time.relative(), time: time})
+                    data.push({name:time.relative(), time: time, routeNo: routeNo != 0 ? '' : it.HeadBoardRouteNo})
 
                 })
                 data = data.sortBy(function(it){

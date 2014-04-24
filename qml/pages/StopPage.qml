@@ -50,12 +50,21 @@ Page {
         }
         delegate: BackgroundItem {
             id: delegate
-
             Label {
+                id: timeLabel
                 x: Theme.paddingLarge
                 text: name
-                anchors.verticalCenter: parent.verticalCenter
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
+            }
+            Label {
+                id: routeLabel
+                text: routeNo
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.secondaryColor
+                anchors {
+                    left: timeLabel.left
+                    top: timeLabel.bottom
+                }
             }
         }
         PullDownMenu {
