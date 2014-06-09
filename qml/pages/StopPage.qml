@@ -7,6 +7,7 @@ Page {
     id: page
     property int stopNo
     property int routeNo
+    property string nickname
     property real listOpacity: 1
     property bool active: (status == PageStatus.Active || status == PageStatus.Activating) && app.active
     ListModel {
@@ -18,7 +19,7 @@ Page {
         anchors.fill: parent
         spacing: Theme.paddingLarge
         header: PageHeader {
-            title: qsTr("Stop: ") + stopNo + (routeNo ? ("\n" + qsTr("Route: ") + routeNo) : "" )
+            title: (nickname ? nickname : qsTr("Stop: ") + stopNo) + (routeNo ? ("\n" + qsTr("Route: ") + routeNo) : "" )
         }
         delegate: BackgroundItem {
             id: delegate

@@ -5,6 +5,7 @@ import QtQuick.LocalStorage 2.0
 Dialog {
     property string stopNo
     property string routeNo
+    property string nickname
     Column {
         spacing: 10
         anchors.fill: parent
@@ -29,11 +30,19 @@ Dialog {
             validator: IntValidator { bottom: 0; top: 200 }
             errorHighlight: false
         }
+        TextField {
+            id: nicknameField
+            width: parent.width * 0.80
+            placeholderText: qsTr("Nickname - optional")
+            label: qsTr("Nickname")
+            errorHighlight: false
+        }
     }
     onDone: {
         if (result == DialogResult.Accepted) {
             stopNo = stopNoField.text
             routeNo = routeNoField.text || '0'
+            nickname = nicknameField.text || ''
         }
     }
 }

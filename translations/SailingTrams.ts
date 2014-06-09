@@ -19,6 +19,14 @@
         <source>Route number - optional</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Nickname - optional</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nickname</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
@@ -28,10 +36,6 @@
     </message>
     <message>
         <source>Add stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -54,6 +58,13 @@
     </message>
     <message>
         <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>database</name>
+    <message>
+        <source>Stop </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

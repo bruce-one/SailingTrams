@@ -14,9 +14,10 @@ Page {
         anchors.fill: parent
         header: PageHeader {
             title: qsTr("Stops")
+            anchors.topMargin: 20
             TextField {
                 anchors.top: parent.top
-                anchors.topMargin: 20
+                anchors.topMargin: 30
                 id: textInput
                 width: parent.width * 0.80
                 inputMethodHints: Qt.ImhDigitsOnly
@@ -40,7 +41,7 @@ Page {
                     dialog.accepted.connect(function() {
                         if(typeof(app.db) !== 'undefined') {
                             app.db.transaction(function(tx) {
-                                tx.executeSql('INSERT INTO UserStops(stopNo, routeNo) VALUES(?, ?);', [dialog.stopNo, dialog.routeNo])
+                                tx.executeSql('INSERT INTO UserStops(nickname, stopNo, routeNo) VALUES(?, ?, ?);', [dialog.nickname, dialog.stopNo, dialog.routeNo])
                             })
                         }
                         Database.update()
@@ -57,7 +58,7 @@ Page {
                 id: nameLabel
                 x: Theme.paddingLarge
                 font.pixelSize: Theme.fontSizeLarge
-                text: qsTr("Stop ") + name
+                text: name
                 color: delegate.highlighted ? Theme.highlightColor : Theme.primaryColor
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -72,7 +73,7 @@ Page {
                 }
             }
             onClicked: {
-                pageStack.push(Qt.resolvedUrl("StopPage.qml"), {stopNo: stopNo, routeNo: routeNo})
+                pageStack.push(Qt.resolvedUrl("StopPage.qml"), {stopNo: stopNo, routeNo: routeNo, nickname: name})
             }
             function remove() {
                 remorseAction("Deleting", function() {
