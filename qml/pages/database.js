@@ -3,14 +3,20 @@ function update(){
     console.log('Updating')
     app.db = app.db || Sql.LocalStorage.openDatabaseSync("SailingTramsDB", "", "SailingTrams", 1000)
 
-    app.db.version === '' && app.db.changeVersion('', '1.0', function(tx){
-        tx.executeSql('CREATE TABLE IF NOT EXISTS UserStops(stopNo NUM, routeNo NUM, PRIMARY KEY(stopNo, routeNo));')
-        app.db.version = '1.0'
-    })
-    app.db.version === '1.0' && app.db.changeVersion('1.0', '2.0', function(tx){
-        tx.executeSql('ALTER TABLE UserStops ADD nickname TEXT;')
-        app.db.version = '2.0'
-    })
+    try {
+        app.db.changeVersion('', '1.0', function(tx){
+            console.log('Database init')
+            tx.executeSql('CREATE TABLE IF NOT EXISTS UserStops(stopNo NUM, routeNo NUM, PRIMARY KEY(stopNo, routeNo));')
+        })
+        app.db = Sql.LocalStorage.openDatabaseSync("SailingTramsDB", "1.0", "SailingTrams", 1000)
+    } catch(e){}
+    try {
+        app.db.changeVersion('1.0', '2.0', function(tx){
+            console.log('Database 1 to 2')
+            tx.executeSql('ALTER TABLE UserStops ADD nickname TEXT;')
+        })
+    } catch(e){}
+    app.db = Sql.LocalStorage.openDatabaseSync("SailingTramsDB", "2.0", "SailingTrams", 1000)
     app.db.transaction(function(tx) {
         var rs
         rs = tx.executeSql('SELECT * FROM UserStops;')
