@@ -9,7 +9,7 @@ Page {
     property int routeNo
     property string nickname
     property real listOpacity: 1
-    property bool active: (status == PageStatus.Active || status == PageStatus.Activating) && app.active
+    property bool active: (status === PageStatus.Active || status === PageStatus.Activating) && app.active
     ListModel {
         id: listModel
     }

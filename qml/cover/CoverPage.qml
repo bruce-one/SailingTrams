@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 import "../pages/upcoming.js" as Upcoming
 
 CoverBackground {
-    property bool active: status == Cover.Active
+    property bool active: status === Cover.Active
     Rectangle {
         height: 80
         anchors.centerIn: parent
@@ -55,7 +55,7 @@ CoverBackground {
         CoverAction {
             iconSource: app.paused ? "image://theme/icon-cover-play" : "image://theme/icon-cover-pause"
             onTriggered: {
-                app._paused = app.stopNo == 0 ? false : !app._paused
+                app._paused = app.stopNo === 0 ? false : !app._paused
             }
         }
     }

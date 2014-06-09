@@ -16,7 +16,6 @@ function update(){
         rs = tx.executeSql('SELECT * FROM UserStops;')
         listModel.clear()
         for(var i = 0, l = rs.rows.length; i < l; i++) {
-            console.log(rs.rows.item(i).nickname)
             listModel.append({name: (rs.rows.item(i).nickname ? rs.rows.item(i).nickname : qsTr("Stop ") + rs.rows.item(i).stopNo+''), stopNo: rs.rows.item(i).stopNo, routeNo: rs.rows.item(i).routeNo})
         }
     })
