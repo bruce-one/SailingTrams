@@ -14,7 +14,7 @@ Dialog {
 
         TextField {
             id: stopNoField
-            width: 480
+            width: parent.width * 0.80
             placeholderText: qsTr("Stop number")
             label: qsTr("Stop number")
             inputMethodHints: Qt.ImhDigitsOnly
@@ -22,11 +22,12 @@ Dialog {
         }
         TextField {
             id: routeNoField
-            width: 480
+            width: parent.width * 0.80
             placeholderText: qsTr("Route number - optional")
             label: qsTr("Route number")
             inputMethodHints: Qt.ImhDigitsOnly
             validator: IntValidator { bottom: 0; top: 200 }
+            errorHighlight: false
         }
     }
     onDone: {

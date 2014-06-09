@@ -23,11 +23,11 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Add stop</source>
+        <source>Stops</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stops</source>
+        <source>Add stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

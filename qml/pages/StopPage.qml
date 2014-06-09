@@ -23,6 +23,10 @@ Page {
         delegate: BackgroundItem {
             id: delegate
             contentHeight: Theme.itemSizeLarge
+            TouchBlocker {
+                anchors.fill: parent
+            }
+
             Label {
                 id: timeLabel
                 opacity: listOpacity

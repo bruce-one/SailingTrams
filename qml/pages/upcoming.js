@@ -20,6 +20,9 @@ function update(stopNo, routeNo, force){
                     , skipOpacity = typeof(listModel) !== "undefined" && listModel.count == 0
 
                 typeof(listModel) !== "undefined" && listModel.clear()
+                if(!tmp.responseObject) {
+                    return
+                }
 
                 tmp.responseObject.each(function(it, i) {
                     time = Date.create(parseInt(new RegExp(/([0-9]+)/).exec(it.PredictedArrivalDateTime)[0], 10))

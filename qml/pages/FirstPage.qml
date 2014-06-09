@@ -14,6 +14,23 @@ Page {
         anchors.fill: parent
         header: PageHeader {
             title: qsTr("Stops")
+            TextField {
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                id: textInput
+                width: parent.width * 0.80
+                inputMethodHints: Qt.ImhDigitsOnly
+                validator: IntValidator { bottom: 0; top: 9999 }
+                errorHighlight: false
+                placeholderText: 'Quick stop search'
+                EnterKey.enabled: text.length === 4
+                EnterKey.highlighted: text.length === 4
+                EnterKey.onClicked: {
+                    pageStack.push(Qt.resolvedUrl("StopPage.qml"), {stopNo: text})
+                    text = ''
+                    focus = false
+                }
+            }
         }
         PullDownMenu {
             MenuItem {
