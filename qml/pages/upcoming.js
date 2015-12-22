@@ -8,7 +8,7 @@ function update(stopNo, routeNo, force){
     console.log('Updating')
 
     var xhr = app.xhr = new XMLHttpRequest()
-    xhr.open("GET", "http://www.tramtracker.com/Controllers/GetNextPredictionsForStop.ashx?stopNo="+stopNo+"&routeNo="+routeNo+"&isLowFloor=false")
+    xhr.open("GET", "http://www.tramtracker.com.au/Controllers/GetNextPredictionsForStop.ashx?stopNo="+stopNo+"&routeNo="+routeNo+"&isLowFloor=false")
     xhr.onreadystatechange = function() {
         if ( xhr.readyState == xhr.DONE ) {
             if ( xhr.status == 200 ) {
